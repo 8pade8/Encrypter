@@ -3,9 +3,9 @@ import java.util.*;
 
 public class MySimpleCryptoAlgorithm implements CryptoAlgorithm {
 
-    BiMap<Byte,Byte> key = new BiMap<>();
+    private BiMap<Byte,Byte> key = new BiMap<>();
 
-    LinkedList<Byte> bytes = new LinkedList<>();
+    private LinkedList<Byte> bytes = new LinkedList<>();
 
     @Override
     public void encrypt(File decryptFile, File cryptFile, Object key) throws IOException {
@@ -70,9 +70,6 @@ public class MySimpleCryptoAlgorithm implements CryptoAlgorithm {
         for (int i = -128; i <= 127 ; i++) {
             byte d = (byte) i;
             byte b = getRandomByte();
-            while (key.containsKey(b)) {
-                b = getRandomByte();
-            }
             key.put(b, d);
         }
     }
